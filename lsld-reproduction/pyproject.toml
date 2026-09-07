@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lsld-reproduction"
+version = "0.4.0"
+description = "Clean reproduction of contextual entrainment and entrainment-head experiments"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {text = "MIT"}
+dependencies = [
+  "accelerate>=0.34,<2",
+  "matplotlib>=3.8,<4",
+  "nltk>=3.8,<4",
+  "numpy>=1.26,<3",
+  "scipy>=1.11,<2",
+  "torch>=2.4,<3",
+  "transformers>=4.57,<5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+lsld = "lsld_repro.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
